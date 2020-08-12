@@ -10,22 +10,18 @@ export const clearSearchResults = () => {
     elements.searchResultsList.innerHTML = '';
 }; 
 
-const reduceRecipeTitle = (recipeTitle, limit = 17) => {
+export const highlightSelected = id => {
+
+    const resultsArr = Array.from(document.querySelectorAll('.results__link'));
+    resultsArr.forEach(element => element.classList.remove('results__link--active'));
+
+    document.querySelector(`.results__link, a[href="#${id}"]`).classList.add('results__link--active');
+};
+
+export const reduceRecipeTitle = (recipeTitle, limit = 17) => {
     // let wordArray;
 
     if (recipeTitle.length >= limit) {
-
-        // wordArray = recipeTitle.split(' ');
-        // recipeTitle = '';
-
-        // for (const [index, word] of wordArray.entries()) {
-        //     if (recipeTitle.length + word.length > limit ) {
-        //         break;
-        //     } else {
-        //         recipeTitle += index === 0? word : ` ${word}`;
-        //     }
-        // }
-        // recipeTitle += '...';
 
         recipeTitle = `${
             recipeTitle.split(' ')
